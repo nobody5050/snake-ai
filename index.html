@@ -58,8 +58,8 @@ function getRandomInt(min, max) {
 function loop() {
   requestAnimationFrame(loop);
 
-  // slow game loop to 15 fps instead of 60 (60/15 = 4)
-  if (++count < 4) {
+  // slow game loop to 6 fps instead of 60 (60/10 = 6)
+  if (++count < 10) {
     return;
   }
 
@@ -103,7 +103,7 @@ function loop() {
   snake.cells.forEach(function(cell, index) {
 
     // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
-    context.fillRect(cell.x, cell.y, grid, grid);
+    context.fillRect(cell.x, cell.y, grid-1, grid-1);
 
     // snake ate apple
     if (cell.x === apple.x && cell.y === apple.y) {
