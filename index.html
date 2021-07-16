@@ -56,6 +56,7 @@ function getRandomInt(min, max) {
 
 // game loop
 function loop() {
+  aimove = strategy();
   requestAnimationFrame(loop);
 
   // slow game loop to 6 fps instead of 60 (60/10 = 6)
@@ -72,18 +73,22 @@ function loop() {
 
   // wrap snake position horizontally on edge of screen
   if (snake.x < 0) {
-    snake.x = canvas.width - grid;
+    resetGame();
+    //snake.x = canvas.width - grid;
   }
   else if (snake.x >= canvas.width) {
-    snake.x = 0;
+    resetGame();
+    //snake.x = 0;
   }
 
   // wrap snake position vertically on edge of screen
   if (snake.y < 0) {
-    snake.y = canvas.height - grid;
+    resetGame();
+    //snake.y = canvas.height - grid;
   }
   else if (snake.y >= canvas.height) {
-    snake.y = 0;
+    resetGame();
+    //snake.y = 0;
   }
 
   // keep track of where snake has been. front of the array is always the head
@@ -135,6 +140,11 @@ function resetGame() {
 
   apple.x = getRandomInt(0, 25) * grid;
   apple.y = getRandomInt(0, 25) * grid;
+}
+
+function strategy() {
+  //todo: make an actual strategy
+  return 0
 }
 
 // listen to keyboard events to move the snake
